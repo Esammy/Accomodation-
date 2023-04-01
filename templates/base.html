@@ -101,12 +101,11 @@
       {% for notification in  LodgeProperties %}
         <p>notification</p>
       {% endfor %}
-      {% if message %}
-        {% for message in messages %}
-          <div class="alert alert-{{ message.tags }}">
-            {{ message }}
-          </div>
-        {% endfor %}
+      {% if messages %}
+            {% for msg in messages %}
+            <div style="text-align: center;" class="alert alert-{{ message.tags }}">
+              {{ msg }}
+            {% endfor %}
       {% endif %}
       {% block content %}
 

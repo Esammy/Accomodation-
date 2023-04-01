@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .form import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, AgentPersonalInfoForm, AgentPropertiesForm #, BookedLodgeForm, PaymentForm,
 from django.contrib import messages
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
-from .models import LodgeProperties, Lodge, NewPayment, Pop_searched, Profile, AgentPersonalInfo #, Payment,
+from .models import LodgeProperties, Lodge, NewPayment, Pop_searched, Profile, AgentPersonalInfo, Contact #, Payment,
 from django.views.generic import DetailView, ListView
 from django.shortcuts import render, redirect
 from django.conf import settings
@@ -47,7 +47,17 @@ def about(request):
     return render(request, 'about.html')
 
 def contact(request):
-    return render(request, 'contact.html')
+    if request.method=='POST':
+        full_name = request.POST['full_name']
+        email = request.POST['email']
+        subject  = request.POST['subject']
+        message = request.POST['message']
+        date = datetime.now()
+        contact = Contact.objects.create(full_name=full_name, email=email, subject=subject, message=message, date = date)
+        messages.success(request,'Message has been sent successfully')
+        return HttpResponseRedirect('/')
+    else:
+        return render(request, 'contact.html')
 
 def register(request):
     if request.method == 'POST':
@@ -57,14 +67,6 @@ def register(request):
             username = form.cleaned_data.get('username')
             user_email = form.cleaned_data.get('email') 
             messages.success(request, f'Account for {username} has been created!')
-
-            # subject = 'welcome to Naomi Acc Sys'
-            # message = (f"Hi {username}, thank you for registering in Naomi's third party lodge acc system.")
-            # email_from = settings.EMAIL_HOST_USER
-            # recipient_list = [user_email, ]
-            # print('from: ', email_from)
-            # print('to:', recipient_list)
-            # send_mail( subject, message, email_from, recipient_list )
 
             return redirect('login')
     else:
