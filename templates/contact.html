@@ -2,129 +2,27 @@
 {% load static %}
 {% block content %}
 <div class="container">
-    <div class="contact_all">
-        <div class="contactheader">Contact</div>
-        <div class="contactinfo">
-            <div class="outerBox">
-                <div class="icon fab fa-facebook-f"></div>
-                <div class="iconproper"><a href="#">+2348100368023</a></div>
-            </div>
-
-            <div class="outerBox">
-                <div class="icon"></div>
-                <div class="iconproper">+2348100368023</div>
-            </div>
-
-        
-            <div class="outerBox">
-                <div class="icon"></div>
-                <div class="iconproper">+2348100368023</div>
-            </div>
-
-            <div class="outerBox">
-                <div class="icon"></div>
-                <div class="iconproper">+2348100368023</div>
-            </div>
-
-            <div class="outerBox">
-                <div class="icon"></div>
-                <div class="iconproper">+2348100368023</div>
-            </div>
-
-            <div class="outerBox">
-                <div class="icon"></div>
-                <div class="iconproper">+2348100368023</div>
-            </div>
-        </div>
-    </div>
-  
+  <br>
+  <header>
+    <h1>Contact Us</h1>
+  </header>
+  <main>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" required>
+      
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+      
+      <input type="submit" value="Submit">
+    </form>
+  </main>
 </div>
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
-      <h1>Contact Us</h1>
-    </header>
-    <main>
-      <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="subject">Subject:</label>
-        <input type="text" id="subject" name="subject" required>
-        
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-        
-        <input type="submit" value="Submit">
-      </form>
-    </main>
-    <footer>
-      <p>Copyright © 2023</p>
-    </footer>
-  </body>
-</html>
+
 {% endblock content %}
-
-
-
-<!-- gjhg -->
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-  }
-  
-  h1 {
-    margin: 0;
-  }
-  
-  main {
-    padding: 20px;
-  }
-  
-  form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
-    margin-top: 20px;
-  }
-  
-  label {
-    display: block;
-    font-weight: bold;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  textarea {
-    border-radius: 5px;
-    border: none;
-    padding: 10px;
-    width: 100%;
-  }
-  
-  input[type="submit"] {
-    background-color: #333;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    padding: 10px 20px;
-  }
-  
-  footer {
-   
-  
