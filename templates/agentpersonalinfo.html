@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<br>
+<div class="container">
+    <div class="registerpage">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-control">
+                <legend class="personalheading"><h3>Agent Personal Information</h3></legend> 
+                <hr>
+                <div class="formarea">
+                    <div class="one">
+                        <div>
+                            <label class="form-label">First Name</label>
+                            {{ form.agent_fname }}
+            
+                        </div>
+                        <div>
+                            <label class="form-label">Phone Number</label>
+                            {{ form.phone_number }}
+                        </div>
+                        <div>
+                            <label class="form-label">Email</label>
+                            {{ form.agent_email }}
+                        </div>
+                        <div>
+                            <label class="form-label">Property Address</label>
+                            {{ form.home_address2 }}
+                        </div>
+                    </div>
+    
+                    <div class="two">
+                        <div>
+                            <label class="form-label">Last Name</label>
+                            {{ form.agent_lname }}
+            
+                        </div>
+                        <div>
+                            <label class="form-label">Phone Number 2</label>
+                            {{ form.phone_number2 }}
+                        </div>
+                        <div>
+                            <label class="form-label">Home Address</label>
+                            {{ form.home_address1 }}
+                        </div>
+                        <div>
+                            <label class="form-label">State</label>
+                            {{ form.state }}
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Submit</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already have an account? <a class="ml-2" href="{% url 'login' %}">login</a>
+            </small>
+        </div>
+    </div>
+</div>    
+{% endblock content %}

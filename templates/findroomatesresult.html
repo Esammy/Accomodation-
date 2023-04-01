@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container findroomatepage">
+  <br>
+  <br>
+    
+    <div class="matching_heading"><h2>Personal Matching Info</h2></div>
+    <div class="personal">
+      <table>
+        <tr>
+          <th id="pers"><h3>Field</h3></th>
+          <th id="pers"><h3>Data</h3></th>
+        </tr>
+          <tr>
+            <th>Firstname</th>
+            <td>{{ l_score.fname }}</td>
+          </tr>
+          <tr>
+            <th>Lastname</th>
+            <td>{{ l_score.lname }}</td>
+          </tr>
+          <tr>
+            <th>Level</td>
+            <td>{{ l_score.level }}</td>
+          </tr>
+          <tr>
+            <th>Phone Number</td>
+            <td>{{ l_score.phone_number }}</td>
+          </tr>
+          <tr>
+            <th>Email</td>
+            <td>{{ l_score.email_i }}</td>
+          </tr>
+          <tr>
+            <th>State</td>
+            <td>{{ l_score.state }}</td>
+          </tr>
+          <tr>
+            <th>Sex</td>
+            <td>{{ l_score.sex }}</td>
+          </tr>
+          <tr>
+            <th>Earlywake</td>
+            <td>{{ l_score.earlywake }}</td>
+          </tr>
+          <tr>
+            <th>Noise</td>
+            <td>{{ l_score.noise }}</td>
+          </tr>
+          <tr>
+            <th>Organized Space</td>
+            <td>{{ l_score.organizedSpace }}</td>
+          </tr>
+          <tr>
+            <th>Grocries</td>
+            <td>{{ l_score.grocries }}</td>
+          </tr>
+          <tr>
+            <th>Personalized Space</td>
+            <td>{{ l_score.personalSpace }}</td>
+          </tr>
+          <tr>
+            <th>Disabilities</td>
+            <td>{{ l_score.disabilites }}</td>
+          </tr>
+      </table>
+    </div>
+    <br>
+    <br>
+    <div class="matching_heading"><h2>Available Matches Info</h2></div>
+    <hr>
+    <div class=" match" style="overflow-x: auto;">
+        <table>
+          <tr>
+            <th id="pers">Firstname</th>
+            <th id="pers">Level</th>
+            <th id="pers">Lastname</th>
+            <th id="pers">Phone Number</th>
+            <th id="pers">Email</th>
+            <th id="pers">State</th>
+            <th id="pers">Sex</th>
+            <th id="pers">Earlywake</th>
+            <th id="pers">Noise</th>
+            <th id="pers">Organized Space</th>
+            <th id="pers">Share Grocries</th>
+            <th id="pers">Personalized Space</th>
+            <th id="pers">Disabilities</th>
+          </tr>
+            {% for person in this_person %}
+            <tr>
+              <td>{{ person.fname }}</td>
+              <td>{{ person.lname }}</td>
+              <td>{{ person.level }}</td>
+              <td type="tel">{{ person.phone_number }}</td>
+              <td type="email">{{ person.email_i }}</td>
+              <td>{{ person.state }}</td>
+              <td>{{ person.sex }}</td>
+              <td>{{ person.earlywake }}</td>
+              <td>{{ person.noise }}</td>
+              <td>{{ person.organizedSpace }}</td>
+              <td>{{ person.grocries }}</td>
+              <td>{{ person.personalSpace }}</td>
+              <td>{{ person.disabilites }}</td>
+            </tr>
+            
+            {% endfor %}
+        </table>
+    </div>
+</div>
+<br>
+<br>
+{% endblock content %}

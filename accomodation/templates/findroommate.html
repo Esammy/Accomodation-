@@ -1,0 +1,81 @@
+{% load crispy_forms_tags %}
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <fieldset class="form-control">
+            <legend class="anchor" id="findR">Find Roommate</legend> 
+            <div class="formarea">
+                <div class="one">
+                    <div>
+                        <label class="form-label">First Name</label>
+                        {{ form.fname }}
+        
+                    </div>
+                    <div>
+                        <label class="form-label">Phone Number</label>
+                        {{ form.phone_number }}
+                    </div>
+                    <div>
+                        <label class="form-label">State</label>
+                        {{ form.state }}
+                    </div>
+                    <div>
+                        <label class="form-label">Level</label>
+                        {{ form.level }}
+                    </div>
+                    <div>
+                        <label class="form-label">Do you like to study in silent or with background noise?</label>
+                        {{ form.noise }}
+                    </div>
+                    <div>
+                        <label class="form-label">Do you expect to share groceries and household items?</label>
+                        {{ form.grocries }}
+                    </div>
+                    <div>
+                        <label class="form-label">Do you have any allergies, disabilities, or others?</label>
+                        {{ form.disabilites }}
+                    </div>
+                </div>
+
+                <div class="two">
+                    <div>
+                        <label class="form-label">Last Name</label>
+                        {{ form.lname }}
+        
+                    </div>
+                    <div>
+                        <label class="form-label">Email</label>
+                        {{ form.email_i }}
+                    </div>
+                    <div>
+                        <label class="form-label">Sex</label>
+                        {{ form.sex }}
+                    </div>
+                    <div>
+                        <label class="form-label">Do you prefer to go to bed early or stay up late?</label>
+                        {{ form.earlywake }}
+                    </div>
+                    <div>
+                        <label class="form-label">Do you like to keep your living space clean and organized?</label>
+                        {{ form.organizedSpace }}
+                    </div>
+                    <div>
+                        <label class="form-label">Do you prefer to spend a lot of time with your roommte, or do you prefer to have your own space and time?</label>
+                        {{ form.personalSpace }}
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        
+        {% if user.is_authenticated %}
+        <div class="">
+            <button class="btn btn-outline-info" type="submit">Submit</button>
+        </div>
+        {% else %}
+        <div class="">
+            <p style="color: red;">Please <a href="{% url 'login' %}">login</a> to proceed</p>
+            <button class="btn btn-outline-info" type="submit" disabled>Submit</button>
+        </div>
+        {% endif %}
+    </form> 
+</div>

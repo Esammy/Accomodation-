@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class=" container justify-content-center align-item-center">
+    <div class="desc" data-aos="zoom-out">
+      <fieldset class="confirm_payment">
+        <form id="paymentForm" method="post">
+            <h4>Confirm Payment</h4>
+            <hr>
+            <h5>{{request.user.email}}</h5>
+            <h5> Lodge: {{lodge_id}} </h5>
+            <h5>Price: {{lodge_id.lodge.price}}</h5>
+            <script src="https://js.paystack.co/v1/inline.js"></script>
+            <button type="submit" onclick="payWithPaystack()"> Confirm deposit </button>
+        </form>
+      </fieldset>
+    </div>
+</div>
+
+<script>
+  const paymentForm = document.getElementById('paymentForm');
+  paymentForm.addEventListener("submit", payWithPaystack, false);
+  function payWithPaystack(e) {
+    e.preventDefault();
+
+    let handler = PaystackPop.setup({
+      key: 'pk_test_db51dac4a8cedde49340f363ab54828257112000', // Replace with your public key
+      email: '{{request.user.email}}',
+      amount: '{{lodge_id.lodge.price}}' * 100,
+      ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      // label: "Optional string that replaces customer email"
+      onClose: function(){
+        alert('Window closed.');
+      },
+      callback: function(response){
+        let message = 'Payment complete! Reference: ' + response.reference;
+        alert(message);
+      }
+    });
+
+    handler.openIframe();
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,472 @@
+.ind_page{
+  padding: 5px;
+}
+body {
+  padding: 25px;
+  background-color: black;
+  color: white;
+  font-size: 20px;
+}
+
+.head-top{
+  /*background: url("../images/senate.jpg") no-repeat;
+  background-size: cover;*/
+  width: 100%;
+  height: 60vh;
+  /* background-position: center; */
+
+}
+
+.senateimg{
+  padding-left: 30px;
+}
+.head-top > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#senatefimg{
+  width: 100%;  
+}
+
+.navi{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #333;
+}
+
+.navi ul{
+  list-style-type: none;
+  margin: 5px 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  justify-content: center;
+  align-items: center;
+}
+
+.navi ul li{
+  display: inline-block;
+}
+
+.navi ul li a{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navi ul li a:hover{
+  background-color: #fff;
+  color: #4CAF50;
+  transition: all ease-in 1s;
+  border-radius: 20px;
+}
+
+.active{
+  background-color: #4CAF50;
+}
+
+.logreg{
+  margin-left: 100px;
+  display: inline-block;
+}
+
+
+#second-layout{display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin: 2rem 5rem;
+  padding: 2rem;
+  /*border: 0.2rem solid grey;*/
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+.first-content{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 70px;
+  color: white;
+}
+
+.findroomateformsection{
+  background-color: aliceblue;
+}
+
+.findroomatepage{
+  background-color: rgb(239, 239, 245);
+  border-style: ridge;
+}
+
+.personal{
+  background-color: azure;
+  border-style: inset;
+}
+
+.match{
+  background-color: whitesmoke;
+  border-style: outset;
+}
+
+.matching_heading{
+  text-align: center;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+table, th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  border: 1px solid rgb(201, 184, 184);
+}
+
+tr:hover {
+  background-color: #b8a7a7;
+}
+
+tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+#pers{
+  background-color: #5e4caf;
+  color: white;
+}
+
+
+/** LODGES DESIGN **/
+.lodgecontainer{
+  display: flex;
+  flex-wrap: wrap;
+  column-count: 2;
+  justify-content: flex-start;
+  border-left: 1px solid #ddd;
+}
+
+.smallercont{
+  margin-right: 50px;
+  margin-bottom: 80px;
+  height: 300px;
+  width: 500px;
+  border-color: rgb(88, 30, 30);
+  background-color: rgb(37, 39, 39);
+  padding: 20px 50px 50px 15px;
+  box-shadow: 0 0 10px 5px;
+  border-radius: 15px;
+  color: white;
+  -webkit-box-reflect: below 30px linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+}
+
+.lodgebox{
+  display: flex;
+}
+
+.lodgeimage {
+  width: 50%;
+}
+
+.lodgeprice{
+  background-color: rgb(209, 197, 197);
+  padding: 5px;
+  border-radius: 5px;
+  color: black;
+}
+
+.lodgename{
+  font-size: 30px;
+}
+
+.lodgeImg{
+  border-radius: 15px;
+  transition: transform .2s;
+}
+.lodgeImg:hover {
+  transform: scale(1.5);
+}
+
+.card-img-top_{
+  transition: tranform .5s;
+}
+.card-img-top_:hover{
+  transform: scale(0.8);
+}
+/* 
+.indexlodgetext{
+  font-stretch: expanded;
+} */
+#viewdetails{
+  text-align: center;
+  padding-left: 50px;
+  padding-top: 10px;
+}
+
+#indexviewdetails{
+  text-align: right;
+  padding-left: 50px;
+  padding-top: 10px;
+}
+
+
+.detailedview{
+  width: 150px;
+  border-radius: 5px;
+}
+
+
+/* findroomate form section */
+.formarea{
+  display: flex;
+}
+
+.one{
+  width: 50%;
+}
+.two{
+  width: 50%;
+  margin-left: 8px;
+}
+
+.loginpage{
+  padding: 50px 300px ;
+}
+
+.registerpage{
+  padding: 50px 300px ;
+}
+
+
+/* Detail lodge view */
+.big-img_{
+  display: flex;
+}
+
+.icon-box_{
+  width: 80%;
+}
+
+.detail_img{
+  size: 100px;
+  border-radius: 10px;
+  clip-path: polygon(20px 0,
+                       calc(100% - 20px) 0,
+                       100% 20px,
+                       100% calc(100% - 20px),
+                       calc(100% - 20px) 100%,
+                       20px 100%,
+                       0 calc(100% - 20px),
+                       0 20px);
+}
+
+.detailedlodgetext{
+  background-color: #333;
+  border-radius: 5px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-left: 20px;
+  clip-path: polygon(20px 0,
+                       calc(100% - 20px) 0,
+                       100% 20px,
+                       100% calc(100% - 20px),
+                       calc(100% - 20px) 100%,
+                       20px 100%,
+                       0 calc(100% - 20px),
+                       0 20px);
+  margin-left: 5px;
+}
+.card-title{
+  font-size: 30px;
+}
+
+.rentdiv{
+  float: right;
+}
+.rentbutton{
+  border-radius: 5px;
+  width: 80px;
+}
+.detailotherimg{
+  display: flex;
+  flex-wrap: wrap;
+  column-count: 3;
+  justify-content: flex-start;
+}
+.detail-item_{
+  width: 400px;
+  height: 350px;
+  padding: 20px;
+  justify-content: flex-start;
+}
+.card-img-top_{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  -webkit-box-reflect: below 10px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.2));
+}
+
+.confirm_payment{
+  padding: 100px 400px;
+}
+
+.social-med{
+  padding: 50px;
+}
+#web{
+  padding: 0 20px;
+}
+.p_img{
+  border-left: 1px solid white;
+  padding-left: 7px;
+}
+
+.mymodal{
+  margin-top: 10px;
+  
+}
+
+.filtersec{
+  display: flex;
+  justify-content: space-between;
+}
+.searchfilt{
+  display: flex;
+}
+.pricefilt{
+  display: flex;
+}
+.rb_act{
+  display: flex;
+  justify-content: space-between;
+}
+
+.bells{
+  width: 10px;
+  height: 10px;
+}
+.noti_word{
+  padding: 10px;
+}
+
+.noti_home{
+  border-radius: 10px;
+}
+.lodgebooking{
+  margin: 100px 600px ;
+  border-left: 1px solid rgb(15, 14, 14);
+  padding-left: 7px;
+  padding: 20px 10px;
+}
+
+.personalheading{
+  justify-content: center;
+  text-align: center;
+}
+
+.personone{
+  margin: 10px;
+}
+
+.persontwo{
+  margin: 10px;
+  width: 50%;
+}
+
+#notiD{
+  background-color: #f7eeee;
+}
+
+.searchfiltN{
+  padding-left: 5px;
+  margin-left: 5px;
+}
+
+.info{
+  margin-top: 20px;
+  text-align: center;
+  background-color: rgb(208, 209, 223);
+}
+
+/* Contact page */
+.contactheader{
+  text-align: center;
+}
+.contactinfo{
+  display: flex;
+  justify-content: space-between;
+}
+.outerBox{
+  background-color: #333;
+}
+.icon{
+  size: 25px;
+}
+.iconproper{
+  text-align: center;
+}
+
+/* About page */
+.aboutSec{
+  text-align: center;
+}
+.aboutheader{
+  size: 25px
+}
+.aboutInfo{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+h1 {
+  margin: 0;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.team-member {
+  display: inline-block;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.team-member img {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="d-flex row justify-content-center align-item-center py-md-5 py-3" style="min-height: 90vh;">
+    <h5>Make payment for: NGN {{ payment.amount }}</h5>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <button class="btn btn-success" onclick="payWithPaystack()" id="django-paystack-button">
+        Make payment
+    </button>
+</div>
+<script>
+    function payWithPaystack(){
+        let currency = "NGN"
+        let plan = ""
+        let ref = "{{ payment.ref }}"
+        let obj = {
+            key : "{{ paystack_public_key }}",
+            email : "{{ payment.email }}",
+            amount : "{{ payment.amount }}",
+            ref : ref,
+            callback : function(response){
+                window.location.href = "{% url 'verify-payment' payment.ref %}";
+            }
+        }
+        if (Boolean(currency)){
+            obj.currency = currency.toUpperCase()
+        }
+        if (Boolean(plan)){
+            obj.plan = plan;
+        }
+        var handler = PaystackPop.setup(obj);
+        handler.openIframe();
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <div class="info">
+       {% if user.is_authenticated %}
+            <p>Account for {{ request.user.username }} already exist please proceed to uploading properties <a  href="{% url 'agentProperties' %}" style="color: rgb(24, 57, 165);">here</a> or login with a different as a <a style="color: rgb(24, 57, 165);"  href="{% url 'login' %}">new user </a></p>
+        {% else %}
+            <p>To complete action you must have an account. click <a  href="{% url 'agentProperties' %}" style="color: rgb(24, 57, 165);">here</a> to create an account or login <a style="color: rgb(24, 57, 165);"  href="{% url 'login' %}">login here </a></p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

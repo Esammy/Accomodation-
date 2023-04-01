@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="info">
+        <p>The information provided is not correctly filled follow the instruction and <a  href="{% url 'agentProperties' %}" style="color: rgb(24, 57, 165);">try again</a></p>
+    </div>
+</div>    
+{% endblock content %}
+
+<!--<a href="./directory/yourfile.pdf" download>Download the pdf</a>-->

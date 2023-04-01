@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container loginpage">
+    {% if user.is_authenticated %}
+        <br>
+        <h3 class="alert-secondary">You are logged in already</h3>
+    {% else %}
+    <br>
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-control">
+            <div class="form-group">
+                <legend class="border-bottom mb-4">Log In</legend> 
+                {{ form.as_p}}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Login</button>
+        </div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Need an account? <a class="ml-2" href="{% url 'register' %}" style="color: wheat;">Sign Up Now</a>
+        </small>
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}

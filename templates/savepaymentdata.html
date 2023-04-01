@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<br>
+<div class="lodgebooking justify-content-center">
+    <h5>{{request.user.email}}</h5>
+    <h5> Lodge: {{lodge_id}} </h5>
+    <h5>Price: {{lodge_id.lodge.price}}</h5>
+    <form action="{% url 'ini_pay' object.id %}"  id="form_message{{ user.id }}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="" name='user_id' value='{{ user.id }}'>
+        <input  type="" name="message" value="you booked for br {{lodge_id}} Lodge">
+        <button type="submit" value="Submit" class="btn btn-primary">Confirm Booking</button>
+    </form>
+</div>
+{% endblock content %}

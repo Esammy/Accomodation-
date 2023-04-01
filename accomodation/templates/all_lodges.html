@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="row item" >
+          
+    {% for lodge in lodges %}     
+    <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="icon-box card-body" data-aos="fade-up">
+            <a target="_blank" id="myImg" href="{% url 'lodge_detail' lodge.id %}">
+                <img src="{{ lodge.imageURL }}" class="card-img-top" alt="Lodge photos" width="300" height="200">
+            </a>
+            <div class="desc" data-aos="zoom-out">
+                <h5 class="card-title">{{lodge.name}}</h5>
+                <p class="card-text">{{lodge.price}}</p>
+            
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+  </div>
+  {% if lodges.has_other_pages %}
+  <nav>
+    <ul class="paginatio justify-content-center">
+      {% if lodges.has_previous %}
+        <li class="page-item">
+          <a href="?page{{ lodges.previous_page_number }}" aria-label="Previous" class="page-link">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+  {% else %}
+  <li class="page-item" disabled>
+    <span class="page-link" aria-hidden="true">&laquo;</span>
+  </li>
+  {% endif %}
+
+  {% for l in lodges.paginator.page_range %}
+    {% if lodges.number == l %}
+      <li class="page-item">
+        <a href="#" style="color:red;" class="page-link">{{ l }}</a>
+      </li>
+    {% else %}
+    <li class="page-item">
+      <a href="?page={{ l }}" class="page-link">{{ l }}</a>
+    </li>
+    {% endif %}
+  {% endfor %}
+
+  {% if lodges.has_next %}
+    <li class="page-item">
+      <a href="?page={{ lodges.next_page_number }}" aria-label="Next" class="page-link">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  {% else %}
+  <li class="page-item" disabled>
+    <span class="page-link" aria-hidden="true"></span>
+  </li>
+    </ul>
+  </nav>
+</div>
+
+{% endblock content %}
+

@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.lthumbnail {
+  -webkit-box-shadow: -1px 3px 5px -2px rgba(214,214,214,1);
+  -moz-box-shadow: -1px 3px 5px -2px rgba(214,214,214,1);
+  box-shadow: -1px 3px 5px -2px rgba(214,214,214,1);
+}
+
+.box-element{
+  box-shadow: hsl(0, 0%, 80%) 0 0 15px;
+  background-color: rgb(247, 244, 244);
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+}
+
+.product{
+  border-radius: 0 0 5px 5px;
+}
+
+.polaroid {
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+img {width: 100%}
+
+.img-container {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+
+div.gallery {
+  border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  padding-top: 10px;
+}
+
+
+
+#myImg:hover {
+  box-shadow: 0 0 5px 1px rgba(17, 16, 17, 0.5);
+  transform: scaleY(-1.2);
+  
+  transform: scaleX(-1.1);
+  opacity: 0.5;
+}
+
+.big-img{
+  padding-bottom: 5px;
+}
+  
+.view_all a{
+ color: red !important;
+  
+}
+
+#content-background{
+  background-color: #f2f5f7;
+  padding: 10px;
+  padding-top: 30px;
+}
+
+#profile_img{
+  border-color: black;
+  border: black;
+  background-color: black;
+  
+}
+
+
+#space{
+  padding-left: 5px;
+}
+
+#logo{
+  width: 100%;
+  border-radius: 5px;
+}
+
+div.h1{
+  float: right;
+  display: inline;
+}
+
+
+.placeholder {
+  margin-right: auto;
+  margin-left:auto;
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  /* this is the only relevant part for the example */
+}
+
+div.polaroid {
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.detail-item{
+  padding: 10px;
+
+}

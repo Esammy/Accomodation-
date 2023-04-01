@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+      <!--Required meta tags-->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">             
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+     -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">      
+      <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+
+
+      
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+    </style>
+
+      <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'css/newcss.css' %}">
+      
+      <link rel="stylesheet" type="text/css" href="{% static '/css/landing.css' %}"> 
+
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+      <!-- HTMX -->
+      <script src="https://unpkg.com/htmx.org@1.6.0"></script>
+      
+
+      <div class="mbr-overlay"></div>
+      {% if title %}
+        <title>OffCampAcc - {{ title }}</title>
+      {% else %}
+        <title>OffCampAcc</title>
+      {% endif %}
+
+    </head>
+    <body class="w3-light-grey w3-content" style="max-width:100%">
+    {% load crispy_forms_tags %}
+
+    
+
+      <!--Navigation-->
+      <div class="navi">
+        <ul>
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'list' %}">Available Apartment</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+          <span class="logreg p_img">
+            {% if user.is_authenticated %}
+            <img class="rounded-circle account-img" height="40px" width="40px" 
+                src="{{ user.profile.image.url }}">
+              <li><a class="dropdown-item" href="{% url 'profile' %}">Welcome {{ user.username }}</a></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+              <!-- Icon -->
+              <a href="" class="text-light btn btn-secondary  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class='fa fa-bell-o bells' style='color: white' ></i>
+                <span class="badge rounded-pill badge-notification bg-danger">1</span>
+              </a>
+              
+              <div class="dropdown-menu noti_home" aria-labelledby="dropdownMenu2">
+                {% for notification in  user.notifications.unread %}
+                  <div class="noti_word">
+                    
+                    <span class="dropdown-item"><b>{{ notification.description }}</b></span>
+                    
+                    
+                  </div>
+                  <div class="dropdown-divider"></div>
+                {% endfor %}
+                <div class="searchfiltN">
+                      <form class="d-flex" role="search" method="POST" action="{% url 'search' %}">
+                      {% csrf_token %}
+                      
+                        <input class="form-control me-2"  name="searched" type="search" placeholder="Lodge name..." aria-label="Search">
+                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                      </form>
+                    </div>
+              </div>
+
+            {% else %}
+            <li>
+              <a class="" href="{% url 'login' %}">Login</a>
+            </li>
+            <li>
+              <a class="active" href="{% url 'register' %}">register </a>
+            </li>
+            {% endif %}
+          </span>
+        </ul>
+        
+      </div>
+      {% for notification in  LodgeProperties %}
+        <p>notification</p>
+      {% endfor %}
+      {% if message %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+      {% block content %}
+
+      {% endblock content %}
+      <script>
+        AOS.init();
+      </script>
+
+      <div class="mapouter container" >
+        <div class="gmap_canvas justify-content-center">
+        <iframe 
+          class="gmap_iframe justify-content-center" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
+          src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=FUT minna&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+        </iframe>
+        <a href="https://piratebay-proxys.com/">Piratebay</a>
+        </div>
+        <style>
+          .mapouter{text-align:center;width:600px;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:600px;height:400px;}
+          .gmap_iframe {width:600px!important;height:400px!important;}
+        </style>
+      </div>
+      <br>
+
+       <!-- ======= Footer ======= -->
+      <!-- Footer -->
+      <footer class="text-center text-lg-start bg-dark text-muted">
+        <!-- Section: Social media -->
+        <section class="container-flex justify-content-left  p-4 border-bottom">
+          <div class="container text-right d-none d-lg-block">
+            <a href="" class="me-4 link-secondary">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="" class="me-4 link-secondary">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="" class="me-4 link-secondary">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="" class="me-4 link-secondary">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="" class="me-4 link-secondary">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="" class="me-4 link-secondary">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+          <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Links  -->
+        <section class="">
+          <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <!-- Content -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                  <i class="fas fa-gem me-3 text-secondary"></i>Off-Campus Acc
+                </h6>
+                <p>
+                  Home is where we find comfort and take pleasure to rest
+                </p>
+              </div>
+              <!-- Grid column -->
+
+              <!-- Grid column -->
+              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                  Products
+                </h6>
+                <p>
+                  <a href="#!" class="text-reset">Engineering Exhibition</a>
+                </p>
+                <p>
+                  <a href="https://skool.ng/category/federal-institutions/federal-universities/federal-university-of-technology-minna/school-of-information-and-communications-technology-sict/" class="text-reset">Software Exhibition</a>
+                </p>
+                
+              </div>
+              <!-- Grid column -->
+
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">
+                  Useful links
+                </h6>
+                <p>
+                  <a href="#!" class="text-reset">Senate</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-reset">Hostel</a>
+                </p>
+                <p>
+                  <a href="https://futminna.academia.edu/" class="text-reset">FUTmx Academia</a>
+                </p>
+                
+              </div>
+              <!-- Grid column -->
+
+              <!-- Grid column -->
+              <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                <p><i class="fas fa-home me-3 text-secondary"></i> P. M.B. 65, 920101, Minna, Niger</p>
+                <p>
+                  <i class="fas fa-envelope me-3 text-secondary"></i>
+                  info@futminna.com
+                </p>
+              <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+          </div>
+        </section>
+        <!-- Section: Links  -->
+
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
+          © 2021 Copyright
+        </div>
+        <!-- Copyright -->
+      </footer>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="ind_page">
+    <div class="head-top-outer">
+        <div class="head-top">
+            <img src="{% static 'images/indexpix.jpg' %}" alt="">
+        </div>
+    </div>
+    
+    <main>
+       
+    
+        <section id="second-layout">
+            <div class="first-content">       
+                <h4>Available Apartment</h4>
+                <p><a href="{% url 'list' %}">See all...</a></p>
+            </div>
+
+            <div class="lodgecontainer justify-content-center">
+                {% for lodge in lodges %}
+                <div class="smallercont" data-aos="fade-up">
+                    <div class="lodgebox">
+                        <div class="lodgeimage">
+                            <img class="lodgeImg" src="{{ lodge.imageURL }}" alt="Lodge photos" width="170" height="200">
+                        </div>
+        
+                    
+                        <div class="lodgetext" data-aos="zoom-out">
+                            <h5 class="lodgename">{{lodge.name}}</h5>
+                            <p class="lodgeconv">{{lodge.self_con}}</p>
+                            <p class="lodgeamen">{{lodge.elec_water}}</p>
+                            <p class="lodgedis">{{lodge.distance}}</p>
+                        </div>
+                    </div>
+                    
+                    <div  id="indexviewdetails">
+                        <h5><span class="lodgeprice">N{{lodge.price}}</span></h5>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <div class="findroomateformsection">
+        {% include 'findroommate.html' %}
+        </div>
+
+        
+        <br>
+        <br>
+    </main>
+</div>
+
+{% endblock content %}

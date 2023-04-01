@@ -1,0 +1,60 @@
+<div id="content-background">
+{% if searched %}
+    <div class="lodgecontainer justify-content-center">
+        {% for lodge in results %} 
+        <div class="smallercont" data-aos="fade-up">
+          <div class="lodgebox">
+              <div class="lodgeimage">
+                  <img class="lodgeImg" src="{{ lodge.imageURL }}" alt="Lodge photos" width="170" height="200">
+              </div>
+    
+          
+              <div class="lodgetext" data-aos="zoom-out">
+                  <h5 class="lodgename">{{lodge.name}}</h5>
+                  <p class="lodgeconv">{{lodge.self_con}}</p>
+                  <p class="lodgeamen">{{lodge.elec_water}}</p>
+                  <p class="lodgedis">{{lodge.distance}}</p>
+                  <p>Price: <span class="lodgeprice">N{{lodge.price}}</span></span></p>
+                  
+              </div>
+          </div>
+          
+          <div  id="viewdetails">
+              <a  href="{% url 'lodge_detail' lodge.id %}"><button class="detailedview">View Apartment</button></a>
+          </div>
+        </div>
+    
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% if price_query %}
+    <div class="lodgecontainer justify-content-center">
+        {% for lodge in price_query %} 
+        <div class="smallercont" data-aos="fade-up">
+          <div class="lodgebox">
+              <div class="lodgeimage">
+                  <img class="lodgeImg" src="{{ lodge.imageURL }}" alt="Lodge photos" width="170" height="200">
+              </div>
+    
+          
+              <div class="lodgetext" data-aos="zoom-out">
+                  <h5 class="lodgename">{{lodge.name}}</h5>
+                  <p class="lodgeconv">{{lodge.self_con}}</p>
+                  <p class="lodgeamen">{{lodge.elec_water}}</p>
+                  <p class="lodgedis">{{lodge.distance}}</p>
+                  <p>Price: <span class="lodgeprice">N{{lodge.price}}</span></span></p>
+                  
+              </div>
+          </div>
+          
+          <div  id="viewdetails">
+              <a  href="{% url 'lodge_detail' lodge.id %}"><button class="detailedview">View Apartment</button></a>
+          </div>
+        </div>
+    
+        {% endfor %}
+      </div>
+{% endif %}
+
+</div>

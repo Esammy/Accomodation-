@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <br>
+  <div class="filtersec">
+    
+    <div class="searchfilt">
+      <form class="d-flex" role="search" method="POST" action="{% url 'search' %}">
+      {% csrf_token %}
+      
+        <input class="form-control me-2" name="searched" type="search" placeholder="Search for lodges..." aria-label="Search">
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+      </form>
+    </div>
+    <div class="pricefilt"></div>
+      <form class="d-flex" role="filter" method="POST" action="{% url 'filters' %}">
+        {% csrf_token %}
+        <input class="form-control me-2" name="minimum" type="number" placeholder="Minimum price..." aria-label="Search" required>
+        
+        <input class="form-control me-2" name="maximum" type="number" placeholder="Maximun price..." aria-label="Search" required>
+        <button class="btn btn-outline-secondary" type="submit">filter</button>
+      </form>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div>
+    {% include 'search.html' %}
+  </div>
+  <br>
+
+  <div class="lodgecontainer justify-content-center">
+    {% for lodge in page_obj %} 
+    <div class="smallercont" data-aos="fade-up">
+      <div class="lodgebox">
+          <div class="lodgeimage">
+              <img class="lodgeImg" src="{{ lodge.imageURL }}" alt="Lodge photos" width="170" height="200">
+          </div>
+
+      
+          <div class="lodgetext" data-aos="zoom-out">
+              <h5 class="lodgename">{{lodge.name}}</h5>
+              <p class="lodgeconv">{{lodge.self_con}}</p>
+              <p class="lodgeamen">{{lodge.elec_water}}</p>
+              <p class="lodgedis">{{lodge.distance}}</p>
+              <p>Price: <span class="lodgeprice">N{{lodge.price}}</span></span></p>
+              
+          </div>
+      </div>
+      
+      <div  id="viewdetails">
+          <a  href="{% url 'lodge_detail' lodge.id %}"><button class="detailedview">View Apartment</button></a>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+
+  {% if page_obj.has_other_pages %}
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a href="?page{{ page_obj.previous_page_number }}" aria-label="Previous" class="page-link">
+            <span aria-hidden="true">&laquo;</span>Previous
+          </a>
+        </li>
+      {% else %}
+      <li class="page-item" disabled>
+        <span class="page-link" aria-hidden="true">&laquo;</span>
+      </li>
+      {% endif %}
+
+      {% for l in page_obj.paginator.page_range %}
+        {% if page_obj.number == l %}
+          <li class="page-item">
+            <a href="#" style="color:red;" class="page-link">{{ l }}</a>
+          </li>
+        {% else %}
+        <li class="page-item">
+          <a href="?page={{ l }}" class="page-link">{{ l }}</a>
+        </li>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <li class="page-item">
+          <a href="?page={{ page_obj.next_page_number }}" aria-label="Next" class="page-link">
+            <span aria-hidden="true">&raquo;</span>Next
+          </a>
+        </li>
+      {% else %}
+      <li class="page-item" disabled>
+        <span class="page-link" aria-hidden="true"></span>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+  {% endif %}
+</div>
+{% endblock content %}
+

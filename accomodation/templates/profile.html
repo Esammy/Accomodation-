@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0 detail-item ">
+            <div class="sidenaov mymodal">
+                <img src="{{ user.profile.image.url }}" alt="{{ user.username }}" style="width:100%">
+
+                <h2 class="account-heading">{{ user.username }}</h2>
+                <p class="text-secondary">Level: {{ user.profile.uni_level }}</p>
+                <p class="text-secondary">Email: {{ user.email }}</p>
+                <p class="text-secondary">phone number: {{ user.profile.phone_number }}</p>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Update Profile
+                </button>
+            
+                <!-- Modal -->
+                <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <fieldset class="form-group">
+                                    <legend class="border-bottom mb-4">Profile Info</legend> 
+                                    {{ u_form|crispy }}
+                                    {{ p_form|crispy }}
+                                </fieldset>
+                                <div class="form-group">
+                                    <button class="btn btn-outline-info" type="submit">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-md-10 col-lg-8 align-items-stretch mb-5 mb-lg-0 infobg">
+        <div class="personalinfo">
+            <h2>Personal Infomation </h2>
+        </div>  
+        <div class="personal">
+            <table>
+              <tr>
+                <th id="pers"><h3>Field</h3></th>
+                <th id="pers"><h3>Data</h3></th>
+              </tr>
+                <tr>
+                  <th>Firstname</th>
+                  <td>{{ l_score.fname }}</td>
+                </tr>
+                <tr>
+                  <th>Lastname</th>
+                  <td>{{ l_score.lname }}</td>
+                </tr>
+                <tr>
+                  <th>Level</td>
+                  <td>{{ l_score.level }}</td>
+                </tr>
+                <tr>
+                  <th>Phone Number</td>
+                  <td>{{ l_score.phone_number }}</td>
+                </tr>
+                <tr>
+                  <th>Email</td>
+                  <td>{{ l_score.email_i }}</td>
+                </tr>
+                <tr>
+                  <th>State</td>
+                  <td>{{ l_score.state }}</td>
+                </tr>
+                <tr>
+                  <th>Sex</td>
+                  <td>{{ l_score.sex }}</td>
+                </tr>
+            </table>
+          </div>
+        
+          <div class="social-med">
+            <a id="web" href="#"><i  class="fa fa-dribbble"></i></a> 
+            <a id="web" href="#"><i class="fa fa-twitter"></i></a>  
+            <a id="web" href="#"><i class="fa fa-linkedin"></i></a>  
+            <a id="web" href="#"><i class="fa fa-facebook"></i></a> 
+        </div> 
+    </div>
+</div>
+{% endblock content %}

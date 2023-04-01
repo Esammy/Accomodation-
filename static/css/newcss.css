@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 50%;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+  }
+  
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  
+  button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+  
+  button:hover, a:hover {
+    opacity: 0.7;
+  }
+
+
+
+  /**/
+
+  
+body {
+    font-family: "Lato", sans-serif;
+  }
+  
+  .sidenav {
+    width: auto;
+    position: fixed;
+    z-index: 1;
+    background: rgb(248, 250, 252);
+  }
+  
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #101316;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color: #4b5053;
+  }
+  
+  .main {
+    margin-left: 140px; /* Same width as the sidebar + left position in px */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+.infobg{
+    padding: 10px;
+    text-align: center;
+}
+
+.personalinfo, lookingfor{
+    background: rgb(236, 229, 229);
+    padding: 10px;
+}
+
+.personalinfo h2 {
+  text-align: left;
+}

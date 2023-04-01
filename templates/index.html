@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="ind_page">
+    <div class="head-top-outer">
+        <!-- <div class="head-top">
+            <img src="{% static 'images/indexpix.jpg' %}" alt="">
+        </div> -->
+        <div class="container" id="header">
+            <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+                <img src="{% static 'images/Futminna_logo.jpg' %}" class="img-fluid " id="logo" alt="">
+                <h1>Accommodation System </h1>
+                <h2> for Off Campus students</h2>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 header-img" data-aos="zoom-in" data-aos-delay="200">
+                <img src="{% static 'images/senate.jpg' %}" class="img-fluid animated" id="senateimg" alt="">
+            </div>
+            </div>
+        </div>
+    </div>
+    
+    <main>
+       
+    
+        <section id="second-layout">
+            <div class="first-content">       
+                <h4>Available Apartment</h4>
+                <p ><a href="{% url 'list' %}" style="color: white;">See all...</a></p>
+            </div>
+
+            <div class="lodgecontainer justify-content-center">
+                {% for lodge in lodges %}
+                <div class="smallercont" data-aos="fade-up">
+                    <div class="lodgebox">
+                        <div class="lodgeimage">
+                            <img class="lodgeImg" src="{{ lodge.imageURL }}" alt="Lodge photos" width="170" height="200">
+                        </div>
+        
+                    
+                        <div class="lodgetext" data-aos="zoom-out">
+                            <h5 class="lodgename">{{lodge.name}}</h5>
+                            <p class="lodgeconv">{{lodge.self_con}}</p>
+                            <p class="lodgeamen">{{lodge.elec_water}}</p>
+                            <p class="lodgedis">{{lodge.distance}}</p>
+                        </div>
+                    </div>
+                    
+                    <div  id="indexviewdetails">
+                        <h5><span class="lodgeprice">N{{lodge.price}}</span></h5>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="lodgecontainer justify-content-center"></div>
+                <p>Popular Searches</p>
+                {% if first %}
+                <div class="popularsearched">
+                    <div class="popularsearchHeader">
+
+                    </div>
+                    <div class="popularLodges">
+                        {% for lodge in first %}
+                        <div class="smallercont" data-aos="fade-up">
+                            <div class="lodgebox">
+                                <div class="lodgeimage">
+                                    <img class="lodgeImg" src="{{ lodge.imageURL }}" alt="Lodge photos" width="170" height="200">
+                                </div>
+                
+                            
+                                <div class="lodgetext" data-aos="zoom-out">
+                                    <h5 class="lodgename">{{lodge.name}}</h5>
+                                    <p class="lodgeconv">{{lodge.self_con}}</p>
+                                    <p class="lodgeamen">{{lodge.elec_water}}</p>
+                                    <p class="lodgedis">{{lodge.distance}}</p>
+                                </div>
+                            </div>
+                            
+                            <div  id="indexviewdetails">
+                                <h5><span class="lodgeprice">N{{lodge.price}}</span></h5>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                
+
+                    {% if second %}
+                    <div class="popularsearched">
+                        <div class="popularsearchHeader">
+
+                        </div>
+                        <div class="popularLodges">
+                            {% for lodge in second %}
+                            <div class="smallercont" data-aos="fade-up">
+                                <div class="lodgebox">
+                                    <div class="lodgeimage">
+                                        <img class="lodgeImg" src="{{ lodge.imageURL }}" alt="Lodge photos" width="170" height="200">
+                                    </div>
+                    
+                                
+                                    <div class="lodgetext" data-aos="zoom-out">
+                                        <h5 class="lodgename">{{lodge.name}}</h5>
+                                        <p class="lodgeconv">{{lodge.self_con}}</p>
+                                        <p class="lodgeamen">{{lodge.elec_water}}</p>
+                                        <p class="lodgedis">{{lodge.distance}}</p>
+                                    </div>
+                                </div>
+                                
+                                <div  id="indexviewdetails">
+                                    <h5><span class="lodgeprice">N{{lodge.price}}</span></h5>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+
+        
+        <br>
+        <br>
+    </main>
+</div>
+
+{% endblock content %}

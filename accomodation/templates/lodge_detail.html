@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<br>
+<br>
+  <div class="container">
+    <div class="big-img_" data-aos="zoom-out">  
+      <div class="icon-box_">
+        <img src="{{ object.sorroundingImageURL }}" class="detail_img" alt="Lodge photos" width="100%" >
+      </div>
+      <div class="detailedlodgetext" data-aos="zoom-out">
+        <h5 class="card-title">{{object.lodge}} Lodge</h5>
+        <p class="lodgeconv">{{object.lodge.self_con}}</p>
+        <p class="lodgeamen">{{object.lodge.elec_water}}</p>
+        <p class="lodgedis">{{object.lodge.distance}}</p>
+        <p class="card-text">Price: {{object.lodge.price}}</p>
+        <p class="card-text">Rooms Total: {{object.roomsTotalNum}}</p>
+        <p class="card-text">Rooms Available: {{object.roomsAvailable}}</p>
+
+        <div class="rb_act">
+          <div class="book">
+            <a href="{% url 'booking' object.id %}" class="book"><button class="rentbutton">Book</button></a>
+          </div>
+          
+          <div class="rentdiv">
+            <a href="{% url 'ini_pay' object.id %}" class="rent"><button class="rentbutton">Rent</button></a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    <div class="detailotherimg justify-content-center">
+      <div class="detail-item_" data-aos="fade-up">
+        <img src="{{ object.lodge_interiorImageURL }}" class="card-img-top_" alt="Lodge photos" >
+      </div>
+      <div class="detail-item_" data-aos="fade-up">
+        <img src="{{ object.roomFrontImageURL }}" class="card-img-top_" alt="Lodge photos" >
+      </div>
+      <div class="detail-item_" data-aos="fade-up">
+        <img src="{{ object.roomBackImageURL }}" class="card-img-top_" alt="Lodge photos" >
+      </div>
+      <div class="detail-item_" data-aos="fade-up">
+        <img src="{{ object.roomKitchenImageURL }}" class="card-img-top_" alt="Lodge photos" >
+      </div>
+      <div class="detail-item_" data-aos="fade-up">
+        <img src="{{ object.toiletRoomImageURL }}" class="card-img-top_" alt="Lodge photos" >
+      </div>
+      <div class="detail-item_" data-aos="fade-up">
+        <img src="{{ object.bedRoomImageURL }}" class="card-img-top_" alt="Lodge photos" >
+      </div>
+    </div>
+    
+    
+  </div>
+<br>
+<br>
+<br>
+{% endblock content %}

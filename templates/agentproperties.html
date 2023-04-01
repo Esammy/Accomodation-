@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<br>
+<div class="container">
+    <div class="registerpage">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-control">
+                <legend class="personalheading"><h3>Agent Properties Upload</h3></legend> 
+                <hr>
+                <div class="formarea">
+                    <div class="one">
+                        <div>
+                            <label class="form-label">Owner</label>
+                            {{ form.agent_ersonal_info }}
+            
+                        </div>
+                        <div>
+                            <label class="form-label">Lodge Name</label>
+                            {{ form.lodge_name }}
+            
+                        </div>
+                        <div>
+                            <label class="form-label">Price (No comma)</label>
+                            {{ form.price }}
+                            
+                        </div>
+                        <div>
+                            <label class="form-label">Electricity and Water Availability</label>
+                            {{ form.elec_water }}
+                        </div>
+                        <div>
+                            <label class="form-label">Lodge distance from school</label>
+                            {{ form.distance }}
+                        </div>
+                        <div>
+                            <label class="form-label">Total Number of rooms</label>
+                            {{ form.roomsTotalNum }}
+                        </div>
+                        <div>
+                            <label class="form-label">Available rooms</label>
+                            {{ form.roomsAvailable }}
+                        </div>
+                        <div>
+                            <label class="form-label">Lodge cover photo</label>
+                            {{ form.homeImg }}
+                        </div>
+                    </div>
+    
+                    <div class="two">
+                        <div>
+                            <label class="form-label">Surrounding photo</label>
+                            {{ form.sorrounding }}
+            
+                        </div>
+                        <div>
+                            <label class="form-label">Interior photo</label>
+                            {{ form.lodge_interior }}
+                        </div>
+                        <div>
+                            <label class="form-label">Room front</label>
+                            {{ form.roomFront }}
+                        </div>
+                        <div>
+                            <label class="form-label">Room Back</label>
+                            {{ form.roomBack }}
+                        </div>
+                        <div>
+                            <label class="form-label">Kitchen</label>
+                            {{ form.roomKitchen }}
+                        </div>
+                        <div>
+                            <label class="form-label">Toilet & Bathroom</label>
+                            {{ form.roomToiletBath }}
+                        </div>
+                        <div>
+                            <label class="form-label">Bedroom</label>
+                            {{ form.bedRoom }}
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Submit</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already have an account? <a class="ml-2" href="{% url 'login' %}">login</a>
+            </small>
+        </div>
+    </div>
+</div>    
+{% endblock content %}
