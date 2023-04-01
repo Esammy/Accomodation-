@@ -5,94 +5,63 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-md-4 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0 detail-item ">
-            <div class="sidenaov mymodal">
-                <img src="{{ user.profile.image.url }}" alt="{{ user.username }}" style="width:100%">
+        <div class="d-flex align-items-stretch ">
+          <div class="sidenaov mymodal col-lg-4 ">
+              <img src="{{ user.profile.image.url }}" alt="{{ user.username }}" style="width:100%">
 
-                <h2 class="account-heading">{{ user.username }}</h2>
-                <p class="text-secondary">Level: {{ user.profile.uni_level }}</p>
-                <p class="text-secondary">Email: {{ user.email }}</p>
-                <p class="text-secondary">phone number: {{ user.profile.phone_number }}</p>
+              <h2 class="account-heading">{{ user.username }}</h2>
+              <p class="text-secondary">Level: {{ user.profile.uni_level }}</p>
+              <p class="text-secondary">Email: {{ user.email }}</p>
+              <p class="text-secondary">phone number: {{ user.profile.phone_number }}</p>
 
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Update Profile
-                </button>
-            
-                <!-- Modal -->
-                <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="POST" enctype="multipart/form-data">
-                                {% csrf_token %}
-                                <fieldset class="form-group">
-                                    <legend class="border-bottom mb-4">Profile Info</legend> 
-                                    {{ u_form|crispy }}
-                                    {{ p_form|crispy }}
-                                </fieldset>
-                                <div class="form-group">
-                                    <button class="btn btn-outline-info" type="submit">Update</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-    <div class="col-md-10 col-lg-8 align-items-stretch mb-5 mb-lg-0 infobg">
-        <div class="personalinfo">
-            <h2>Personal Infomation </h2>
-        </div>  
-        <div class="personal">
-            <table>
-              <tr>
-                <th id="pers"><h3>Field</h3></th>
-                <th id="pers"><h3>Data</h3></th>
-              </tr>
-                <tr>
-                  <th>Firstname</th>
-                  <td>{{ l_score.fname }}</td>
-                </tr>
-                <tr>
-                  <th>Lastname</th>
-                  <td>{{ l_score.lname }}</td>
-                </tr>
-                <tr>
-                  <th>Level</td>
-                  <td>{{ l_score.level }}</td>
-                </tr>
-                <tr>
-                  <th>Phone Number</td>
-                  <td>{{ l_score.phone_number }}</td>
-                </tr>
-                <tr>
-                  <th>Email</td>
-                  <td>{{ l_score.email_i }}</td>
-                </tr>
-                <tr>
-                  <th>State</td>
-                  <td>{{ l_score.state }}</td>
-                </tr>
-                <tr>
-                  <th>Sex</td>
-                  <td>{{ l_score.sex }}</td>
-                </tr>
-            </table>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Update Profile
+              </button>
+          
+              <!-- Modal -->
+              <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          <form method="POST" enctype="multipart/form-data">
+                              {% csrf_token %}
+                              <fieldset class="form-group">
+                                  <legend class="border-bottom mb-4">Profile Info</legend> 
+                                  {{ u_form|crispy }}
+                                  {{ p_form|crispy }}
+                              </fieldset>
+                              <div class="form-group">
+                                  <button class="btn btn-outline-info" type="submit">Update</button>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
           </div>
-        
-          <div class="social-med">
-            <a id="web" href="#"><i  class="fa fa-dribbble"></i></a> 
-            <a id="web" href="#"><i class="fa fa-twitter"></i></a>  
-            <a id="web" href="#"><i class="fa fa-linkedin"></i></a>  
-            <a id="web" href="#"><i class="fa fa-facebook"></i></a> 
-        </div> 
+      </div>
+        <div class="writeup">
+          <p> <span style="font-size: 200%;">For</span> instance, you can say that multiplying c_t and f_t is a way to deliberately
+            forget irrelevant information in the carry dataflow. Meanwhile, i_t and k_t provide
+            information about the present, updating the carry track with new information.
+            But at the end of the day, these interpretations don’t mean much, because what these
+            operations actually do is determined by the contents of the weights parameterizing
+            them; and the weights are learned in an end-to-end fashion, starting over with each
+            training round, making it impossible to credit this or that operation with a specific
+            purpose. The specification of an RNN cell (as just described) determines your hypothesis
+            space—the space in which you’ll search for a good model configuration during
+            training—but it doesn’t determine what the cell does; that is up to the cell weights.
+            The same cell with different weights can be doing very different things. So the combination
+            of operations making up an RNN cell is better interpreted as a set of constraints
+            on your search, not as a design in an engineering sense.
+            To a researcher, it seems that the choice of such constraints</p>
+        </div>
     </div>
+    
 </div>
+<br>
 {% endblock content %}

@@ -519,3 +519,8 @@ body {
     cursor: pointer;
     padding: 10px 20px;
   }
+
+  .writeup{
+    padding-left: 15px;
+    padding-top: 10px;
+  }
