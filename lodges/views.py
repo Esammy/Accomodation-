@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .form import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, AgentPersonalInfoForm, AgentPropertiesForm #, BookedLodgeForm, PaymentForm,
+from .form import UserRegisterForm, UserUpdateForm, ProfileUpdateForm #, AgentPersonalInfoForm, AgentPropertiesForm, BookedLodgeForm, PaymentForm,
 from django.contrib import messages
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
-from .models import LodgeProperties, Lodge, NewPayment, Pop_searched, Profile, AgentPersonalInfo, Contact #, Payment,
+from .models import LodgeProperties, Lodge, NewPayment, Pop_searched, Contact #, Payment, Profile, AgentPersonalInfo,
 from django.views.generic import DetailView, ListView
 from django.shortcuts import render, redirect
 from django.conf import settings
@@ -29,15 +29,21 @@ def index(request):
     if len(searched_list) > 0:
         first = Lodge.objects.filter(name__contains=searched_list[0])
         if len(searched_list) > 1:
-            second = Lodge.objects.filter(name__contains=searched_list[1])
+            # second = Lodge.objects.filter(name__contains=searched_list[1])
+            pass
 
+            context = {
+                'lodges': Lodge.objects.all()[:4],
+                # 'results': results,
+                'searched_list': searched_list,
+                'first': first,
+                #'second': second
+                }
     context = {
-        'lodges': Lodge.objects.all()[:4],
-        # 'results': results,
-        'searched_list': searched_list,
-        'first': first,
-        'second': second
-        }
+            'lodges': Lodge.objects.all()[:4],
+            # 'results': results,
+            'searched_list': searched_list,
+            }
     return render(request, 'index.html', context)
 
 def login(request):
@@ -242,40 +248,40 @@ def message(request):
         return render(request, 'agenterrorpage.html')
 
 
-def agentPersonalInfo(request):
-    try:
-        if request.method == 'POST':
-            form = AgentPersonalInfoForm(request.POST)
+# def agentPersonalInfo(request):
+#     try:
+#         if request.method == 'POST':
+#             form = AgentPersonalInfoForm(request.POST)
             
-            if form.is_valid():
-                agent = form.save(commit=False)
-                agent.user = request.user
-                agent.save()
-                agent_fname = form.cleaned_data.get('agent_fname')
-                messages.success(request, f' {agent_fname} request has been submitted')
+#             if form.is_valid():
+#                 agent = form.save(commit=False)
+#                 agent.user = request.user
+#                 agent.save()
+#                 agent_fname = form.cleaned_data.get('agent_fname')
+#                 messages.success(request, f' {agent_fname} request has been submitted')
 
-                return redirect('agentProperties')
-        else:
-            form = AgentPersonalInfoForm()
-        return render(request, 'agentpersonalinfo.html', {'form': form})
-    except Exception as e:
-        print(e)
-        return render(request, 'agenterrorpage.html')
+#                 return redirect('agentProperties')
+#         else:
+#             form = AgentPersonalInfoForm()
+#         return render(request, 'agentpersonalinfo.html', {'form': form})
+#     except Exception as e:
+#         print(e)
+#         return render(request, 'agenterrorpage.html')
 
 
-def agentProperties(request):
-    try:
-        if request.method == 'POST':
-            form = AgentPropertiesForm(request.POST, request.FILES)
+# def agentProperties(request):
+#     try:
+#         if request.method == 'POST':
+#             form = AgentPropertiesForm(request.POST, request.FILES)
             
-            if form.is_valid():
-                form.save()
-                messages.success(request, f' request to upload properties has been submitted')
+#             if form.is_valid():
+#                 form.save()
+#                 messages.success(request, f' request to upload properties has been submitted')
 
-                return HttpResponse("Your response has been submitted successfully. The admin will contact you in two days time")
-        else:
-            form = AgentPropertiesForm()
-        return render(request, 'agentproperties.html', {'form': form})
-    except Exception as e:
-        print(e)
-        return render(request, 'propertyerrorpage.html')
+#                 return HttpResponse("Your response has been submitted successfully. The admin will contact you in two days time")
+#         else:
+#             form = AgentPropertiesForm()
+#         return render(request, 'agentproperties.html', {'form': form})
+#     except Exception as e:
+#         print(e)
+#         return render(request, 'propertyerrorpage.html')

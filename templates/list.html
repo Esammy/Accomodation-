@@ -13,6 +13,7 @@
         <button class="btn btn-outline-secondary" type="submit">Search</button>
       </form>
     </div>
+    <br>
     <div class="pricefilt"></div>
       <form class="d-flex" role="filter" method="POST" action="{% url 'filters' %}">
         {% csrf_token %}
@@ -29,6 +30,7 @@
     {% include 'search.html' %}
   </div>
   <br>
+  br
 
   <div class="lodgecontainer justify-content-center">
     {% for lodge in page_obj %} 

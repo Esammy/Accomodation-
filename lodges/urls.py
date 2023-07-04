@@ -32,8 +32,8 @@ urlpatterns = [
     path('message/', views.message, name='message'),
     url('^inbox/notifications/', include(notifications.urls, namespace='notifications')),
 
-    path('Personal_Info/', views.agentPersonalInfo, name='agentPersonalInfo'),
-    path('agent_Properties/', views.agentProperties, name='agentProperties'),
+    # path('Personal_Info/', views.agentPersonalInfo, name='agentPersonalInfo'),
+    # path('agent_Properties/', views.agentProperties, name='agentProperties'),
 
     
     path('confirm_payment/<int:pk>/', ConfPayment.as_view(), name= 'confirm_payment'),

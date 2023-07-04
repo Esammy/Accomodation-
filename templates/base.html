@@ -32,6 +32,15 @@
 
       <!-- HTMX -->
       <script src="https://unpkg.com/htmx.org@1.6.0"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script>
+      $(document).ready(function(){
+        $(".Navigation li").click(function(){
+          $(".Navigation li").removeClass("active");
+          $(this).addClass("active");
+        });
+      });
+      </script>
       
 
       <div class="mbr-overlay"></div>
@@ -49,8 +58,8 @@
 
       <!--Navigation-->
       <div class="navi">
-        <ul>
-          <li><a href="{% url 'index' %}">Home</a></li>
+        <ul id="Navigation">
+          <li><a class="active" href="{% url 'index' %}">Home</a></li>
           <li><a href="{% url 'list' %}">Available Apartment</a></li>
           <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'contact' %}">Contact</a></li>
