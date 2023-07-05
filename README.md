@@ -1,4 +1,4 @@
-# Off-Campus Accommodation Portal
+# Web based off campus accommodation system
 
 Welcome to the Off-Campus Accommodation Portal! Our platform offers a convenient solution for students seeking accommodation options outside their campus. It enables landlords to showcase their properties and allows students to create accounts, explore available lodges, and make bookings. This README serves as a guide to help you understand the features and functionality of our Django-based project.
 
