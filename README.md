@@ -24,7 +24,7 @@ To begin using the Off-Campus Accommodation Portal, follow these steps:
 
 1. Clone the repository:
    ```bash
-   [git clone https://github.com/your-username/your-repository.git](https://github.com/Esammy/Accomodation-.git)
+   https://github.com/Esammy/Accomodation-.git
    ```
 
 2. Install the necessary dependencies:
